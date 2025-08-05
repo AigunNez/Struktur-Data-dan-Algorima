@@ -1,0 +1,47 @@
+<HTML>
+<HEAD>
+    <TITLE>My First HTML Page</TITLE>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <META name="viewport" content="width=device-width, initial-scale=1">
+    <LINK rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    </HEAD>
+<BODY>
+    <h1>Perbandingan Algoritma Pencarian</h1>
+    <form method="post">
+        <label for="array"> Masukkan Array (pisahkan dengan koma):</label>
+        <input type="text" id="array" name="array" required>
+
+        <br><br>
+
+        <label for="target">Masukkan Target:</label>
+        <input type="text" id="target" name="target" required>
+
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if result %}
+        <h2>Hasil Pencarian</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Algoritma</th>
+                    <th>Status</th>
+                    <th>Indeks</th>
+                    <th>Langkah</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in result %}
+                    <tr>
+                        <td>{{ item['name'] }}</td>
+                        <td>{{ item['found'] }}</td>
+                        <td>{{ item['index'] }}</td>
+                        <td>{{ item['steps'] }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+        </table>
+    {% endif %}
+    <BODY>
+</HTML>
